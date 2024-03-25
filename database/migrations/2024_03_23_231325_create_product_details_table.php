@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId( 'product_id' )->index()->references('id')->on('products');
+            $table->text('description')->nullable();
+            $table->text('images')->nullable();
             $table->timestamps();
         });
     }

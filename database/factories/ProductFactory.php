@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ProductType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,16 +24,14 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name;
         return [
-            'name' => fake()->name(),
-            'featured_image' => fake()->imageUrl(),
+            'name' => $name,
+            'slug' => Str::slug($name),
+            'featured_image' => 'https://strapiproduction-16636.kxcdn.com/uploads/AYPS_203_4_01_25911742d3/AYPS_203_4_01_25911742d3.jpg?width=1080&quality=83',
             'price_before_discount' => null,
             'price' => fake()->numberBetween(5500, 10000),
-            'gripe_size' => fake()->numberBetween(3, 5),
-            'weight' => fake()->numberBetween(70, 85),
-            'lbs' => fake()->numberBetween(25, 35),
-            'head_heavy' => fake()->numberBetween(1, 3)
-
+            'product_type' => ProductType::Racket
         ];
     }
 }

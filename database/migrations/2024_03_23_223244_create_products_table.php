@@ -14,19 +14,20 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('featured_image');
+
+            $table->unsignedTinyInteger('product_type')->nullable();
 
             $table->decimal('price_before_discount')->nullable();
             $table->decimal('price');
 
-            $table->string('gripe_size', 10)->nullable();
-            $table->unsignedTinyInteger('weight')->nullable();
-            $table->unsignedTinyInteger('lbs')->nullable();
-            $table->unsignedTinyInteger('head_heavy')->nullable();
-
 
             $table->foreignId( 'brand_id' )->index()->references('id')->on('brands');
             $table->foreignId( 'category_id' )->index()->references('id')->on('categories');
+
+            $table->unsignedTinyInteger('in_stock')->default(1);
+            $table->unsignedTinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

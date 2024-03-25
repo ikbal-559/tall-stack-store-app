@@ -48,13 +48,9 @@
         <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden" id="mobile-menu">
 
             <div class="space-y-1 pb-3 pt-2">
-                <!-- Discover Link -->
-                <a class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6 transition duration-150 ease-in-out" href="http://eventfellow-laravel.test">
-                    Discover
-                </a>
-
-
-
+                <div class="flex px-4">
+                    <livewire:layout.brand-left-menu></livewire:layout.brand-left-menu>
+                </div>
             </div>
 
 

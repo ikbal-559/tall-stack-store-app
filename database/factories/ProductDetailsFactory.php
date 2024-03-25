@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class BrandFactory extends Factory
+class ProductDetailsFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -23,10 +23,8 @@ class BrandFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->name;
         return [
-            'name' => $name,
-            'slug' => Str::slug($name)
+            'description' => fake()->paragraph()
         ];
     }
 
