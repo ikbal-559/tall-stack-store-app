@@ -6,7 +6,7 @@ use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.home')->name('home.page');
 
-Volt::route('/rackets', 'pages.rackets')->name('rackets.page');
+Volt::route('/store', 'pages.store')->name('store.page');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

@@ -7,22 +7,8 @@
 
         </div>
         <nav class="flex flex-1 flex-col">
-            <ul role="list" class="flex flex-1 flex-col gap-y-7">
-                <li>
-                    <ul role="list" class="-mx-2 space-y-1">
-                        <li>
-                            <a class="font-navlink {{ request()->is('/') ? 'bg-gray-50' : '' }}  text-violet-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                               href="{{ route('home.page') }}" wire:navigate>
-                                {{ __('Home Page') }}
-                            </a>
-                        </li>
-
-
-                    </ul>
-                        <livewire:layout.brand-left-menu>
-                </li>
-
-            </ul>
+             <livewire:layout.brand-left-menu></livewire:layout.brand-left-menu>
+             <livewire:layout.categories-left-menu></livewire:layout.categories-left-menu>
         </nav>
     </div>
 </div>
