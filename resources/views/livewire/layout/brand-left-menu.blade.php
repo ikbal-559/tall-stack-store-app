@@ -2,6 +2,7 @@
 
 use Livewire\Attributes\Computed;
 use Livewire\Volt\Component;
+use Livewire\Attributes\On;
 
 new class extends Component {
 
@@ -19,9 +20,15 @@ new class extends Component {
         $this->dispatch('filter-by-brand', $this->selectedBrands);
     }
 
+    #[On('select-brand')]
+    public function updateBrands($id):void
+    {
+        $this->selectedBrands = [$id];
+    }
+
 }; ?>
 <ul class="mb-5">
-    <li>{{ __('Brands') }}</li>
+    <li  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Brands') }}</li>
     @foreach($this->brands as $brand)
         <li>
             <input wire:model.live="selectedBrands" type="checkbox"

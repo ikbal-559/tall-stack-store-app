@@ -27,25 +27,50 @@ class DatabaseSeeder extends Seeder
 //            'email' => 'test@example.com',
 //        ]);
 
-        Brand::factory(5)->create();
-        Category::factory(10)->create();
+        $brand = Brand::factory()->create([
+            'name' => 'Ashaway',
+            'slug' => 'ashaway'
+        ]);
+        $category = Category::factory()->create(['name' => 'Quantum','brand_id' => $brand->id]);
+        $this->createProduct($brand, $category);
+        $category = Category::factory()->create(['name' => 'Phantom','brand_id' => $brand->id]);
+        $this->createProduct($brand, $category);
+        $category = Category::factory()->create(['name' => 'Viper','brand_id' => $brand->id]);
+        $this->createProduct($brand, $category);
 
-        for ($i = 1; $i <= 50; $i++){
-           $product = Product::factory()->create([
-                'brand_id' => Brand::orderBy(DB::raw('RAND()'))->first()->id,
-                'category_id' => Category::orderBy(DB::raw('RAND()'))->first()->id,
+        $brand = Brand::factory()->create([
+            'name' => 'Lining',
+            'slug' => 'lining'
+        ]);
+        $category = Category::factory()->create(['name' => 'Tectonic','brand_id' => $brand->id]);
+        $this->createProduct($brand, $category);
+        $category = Category::factory()->create(['name' => 'Axforce','brand_id' => $brand->id]);
+        $this->createProduct($brand, $category);
+        $category = Category::factory()->create(['name' => 'Air Force','brand_id' => $brand->id]);
+        $this->createProduct($brand, $category);
+        $category = Category::factory()->create(['name' => 'G-Force','brand_id' => $brand->id]);
+        $this->createProduct($brand, $category);
+
+
+
+    }
+
+    private function createProduct($brand, $category){
+        for ($i = 1; $i <= rand(5,30); $i++){
+            $product = Product::factory()->create([
+                'brand_id' => $brand,
+                'category_id' => $category,
             ]);
-           ProductDetails::factory()->create([
-               'product_id' => $product->id
-           ]);
-           ProductMeta::create(
-               [
-                   'product_id' => $product->id,
-                   'meta_key' =>'Gripe Size',
-                   'meta_value' =>'3U'
-               ]
-           );
+            ProductDetails::factory()->create([
+                'product_id' => $product->id
+            ]);
+            ProductMeta::create(
+                [
+                    'product_id' => $product->id,
+                    'meta_key' =>'Gripe Size',
+                    'meta_value' =>'3U'
+                ]
+            );
         }
-
     }
 }

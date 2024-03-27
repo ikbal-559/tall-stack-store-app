@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 
-Volt::route('/', 'pages.home')->name('home.page');
+Volt::route('/brand/{brandSlug}', 'pages.store')->name('store.page');
+
+Volt::route('/', 'pages.store')->name('home.page');
 
 Volt::route('/store', 'pages.store')->name('store.page');
+
+// Brand Page
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

@@ -1,15 +1,27 @@
 <?php
 
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component {
 
+    public array $selectedBrands = [];
+
+    #[On('filter-by-brand')]
+    public function updateBrands($items):void
+    {
+        $this->selectedBrands = $items;
+    }
 
     #[Computed]
     public function categories()
     {
-        return \App\Models\Category::withCount('products')->get();
+        return \App\Models\Category::withCount('products')
+            ->when(!empty($this->selectedBrands), function ($q){
+                return $q->whereIn('brand_id', $this->selectedBrands);
+            })
+            ->get();
     }
 
 
@@ -22,7 +34,7 @@ new class extends Component {
 
 }; ?>
 <ul>
-    <li>{{ __('Categories') }}</li>
+    <li  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Categories') }}</li>
     @foreach($this->categories as $category)
         <li>
             <input wire:model.live="selectedCategory" type="checkbox"

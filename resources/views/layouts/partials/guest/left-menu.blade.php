@@ -9,6 +9,7 @@
         <nav class="flex flex-1 flex-col">
              <livewire:layout.brand-left-menu></livewire:layout.brand-left-menu>
              <livewire:layout.categories-left-menu></livewire:layout.categories-left-menu>
+             <livewire:layout.budget-left-menu></livewire:layout.budget-left-menu>
         </nav>
     </div>
 </div>
