@@ -2,13 +2,21 @@
     <nav x-data="{ open: false }" class="border-b border-purple-100 " >
         <div class="sm:px-6 md:px-8 py-2">
             <div class="flex ">
-                <div class="md:hidden">
+                <div class="lg:hidden">
                     <a href="{{ route('home.page') }}" wire:navigate class="flex items-center">
                         <h1 class="ml-2 font-logo text-xl font-extrabold text-violet-900">{{ config('app.name') }}</h1>
                     </a>
                 </div>
 
                 <div class="flex flex-1 items-end justify-end sm:items-stretch sm:justify-end ">
+                    <div class="sm:ml-6">
+                        <div class="flex space-x-4 items-end justify-end">
+                            <button class="text-white  hover:bg-gray-100    font-medium  pb-2 px-4 text-sm px-2  " type="button" @click="drawerShoppingCart = !drawerShoppingCart">
+                                <img class="w-[25px] h-auto"  src="https://img.icons8.com/ios/50/4c1d95/add-shopping-cart--v1.png" alt="add-shopping-cart--v1"/>
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="sm:ml-6">
                         <div class="flex space-x-4 items-end justify-end">
                             <a wire:navigate href="{{ route('home.page') }}" class="text-blue-900  px-3 py-2 text-sm font-medium">{{ __('Home') }}</a>
@@ -20,7 +28,7 @@
                         </div>
                     </div>
 
-                    <div class="flex ">
+                    <div class="flex lg:hidden ">
                         <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -42,22 +50,14 @@
                     <livewire:layout.categories-left-menu></livewire:layout.categories-left-menu>
                 </div>
             </div>
-
-
             <div class="border-t border-gray-200 pb-3 pt-4">
-
-                <!-- Responsive Settings Options For Logged Users -->
-
-                <!-- Log In & Register Links -->
                 <div class="mt-3 space-y-1">
                     <ul class="flex list-none">
                         <li><a wire:navigate href="{{ route('login') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">{{ __('Log in') }}</a></li>
                     </ul>
                 </div>
-
-
             </div>
         </div>
-
     </nav>
 </div>
+<livewire:layout.shopping-cart />
