@@ -12,6 +12,19 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'featured_image',
+        'product_type',
+        'price_before_discount',
+        'price',
+        'brand_id',
+        'category_id',
+        'in_stock',
+        'status'
+    ];
+
     protected $casts = [
         'product_type'
     ];
@@ -30,6 +43,11 @@ class Product extends Model
     public function brand (): BelongsTo
     {
         return $this->belongsTo(Brand::class, 'brand_id');
+    }
+
+    public function category (): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function getUnitPriceAttribute($value) : float

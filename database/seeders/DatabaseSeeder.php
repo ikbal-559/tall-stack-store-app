@@ -8,8 +8,6 @@ use App\Models\Product;
 use App\Models\ProductDetails;
 use App\Models\ProductMeta;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Factories\BrandFactory;
 use Illuminate\Database\Seeder;
 use DB;
 
@@ -20,12 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+         User::factory(10)->create();
 
-//        User::factory()->create([
-//            'name' => 'Test User',
-//            'email' => 'test@example.com',
-//        ]);
+        User::factory()->create([
+            'name' => 'Test Admin',
+            'email' => 'admin@admin.com',
+        ]);
 
         $brand = Brand::factory()->create([
             'name' => 'Ashaway',
